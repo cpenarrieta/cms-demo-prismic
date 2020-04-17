@@ -4,21 +4,21 @@ import Menu from "./components/Menu";
 import AddAddress from "./pages/AddAddress";
 import AddEmployee from "./pages/AddEmployee";
 import Dashboard from "./pages/Dashboard";
-// import { PrismicLink } from "apollo-link-prismic";
-// import { InMemoryCache } from "apollo-cache-inmemory";
-// import ApolloClient from "apollo-client";
-// import { ApolloProvider } from "@apollo/react-hooks";
+import { PrismicLink } from "apollo-link-prismic";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import ApolloClient from "apollo-client";
+import { ApolloProvider } from "@apollo/react-hooks";
 
 export default function App() {
-  // const client = new ApolloClient({
-  //   link: PrismicLink({
-  //     uri: "https://cms-demo-gusto.prismic.io/graphql",
-  //   }),
-  //   cache: new InMemoryCache(),
-  // });
+  const client = new ApolloClient({
+    link: PrismicLink({
+      uri: "https://cms-demo-gusto.prismic.io/graphql",
+    }),
+    cache: new InMemoryCache(),
+  });
 
   return (
-    // <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
       <Router>
         <div>
           <Menu />
@@ -35,6 +35,6 @@ export default function App() {
           </Switch>
         </div>
       </Router>
-    // </ApolloProvider>
+    </ApolloProvider>
   );
 }

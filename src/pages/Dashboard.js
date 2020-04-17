@@ -1,39 +1,40 @@
 import React from "react";
 import Banner from "../components/Banner";
 import dashboardImahe from "../images/dashboard-image.jpg";
-// import { useQuery } from '@apollo/react-hooks';
-// import gql from 'graphql-tag';
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
-// const DASHBOARD_CMS_QUERY = gql`
-//   query {
-//     allDashboards(tags: "payroll-admin") {
-//       edges {
-//         node {
-//           dashboard_title
-//           dashboard_sub_title
-//           dashboard_description
-//           banners {
-//             banner_title
-//             banner_content
-//             banner_type
-//           }
-//           welcome_image
-//         }
-//       }
-//     }
-//   }
-// `;
+const DASHBOARD_CMS_QUERY = gql`
+  query {
+    allDashboards(tags: "payroll-admin") {
+      edges {
+        node {
+          dashboard_title
+          dashboard_sub_title
+          dashboard_description
+          banners {
+            banner_title
+            banner_content
+            banner_type
+          }
+          welcome_image
+        }
+      }
+    }
+  }
+`;
 
 function Dashboard({ userFirstName }) {
-  // const { loading, data } = useQuery(DASHBOARD_CMS_QUERY);
+  const { loading, data } = useQuery(DASHBOARD_CMS_QUERY);
+  const cmsData = data?.allDashboards?.edges?.[0]?.node
 
-  // if (loading) {
-  //   return <div>loading...</div>
-  // }
+  if (loading || !cmsData) {
+    return <div>loading...</div>;
+  }
 
   return (
     <div className="dashboard">
-      <h2>Gusto Dashboard</h2>
+      <h2>{cmsData.dashboard_title}</h2>
       <h3>Welcome {userFirstName} to Gusto</h3>
       <div className="banners">
         <Banner
