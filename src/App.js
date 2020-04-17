@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Menu from "./components/Menu";
+import AddAddress from "./pages/AddAddress";
+import AddEmployee from "./pages/AddEmployee";
+import Dashboard from "./pages/Dashboard";
+// import { PrismicLink } from "apollo-link-prismic";
+// import { InMemoryCache } from "apollo-cache-inmemory";
+// import ApolloClient from "apollo-client";
+// import { ApolloProvider } from "@apollo/react-hooks";
 
-function App() {
+export default function App() {
+  // const client = new ApolloClient({
+  //   link: PrismicLink({
+  //     uri: "https://cms-demo-gusto.prismic.io/graphql",
+  //   }),
+  //   cache: new InMemoryCache(),
+  // });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <ApolloProvider client={client}>
+      <Router>
+        <div>
+          <Menu />
+          <Switch>
+            <Route path="/add-address">
+              <AddAddress />
+            </Route>
+            <Route path="/add-employee">
+              <AddEmployee />
+            </Route>
+            <Route path="/">
+              <Dashboard userFirstName="Cristian" />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    // </ApolloProvider>
   );
 }
-
-export default App;
