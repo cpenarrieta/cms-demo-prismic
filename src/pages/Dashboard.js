@@ -19,11 +19,11 @@ function Dashboard({ userFirstName }) {
           type="danger"
         />
       </div>
-      <div>
-        <div className="left">
+      <div className="dashboard-content">
+        <div className="dashboard-image ">
           <img src={dashboardImahe} alt="dashboard logo" />
         </div>
-        <div className="right">
+        <div className="dashboard-text">
           very long message here. very long message here. very long message
           here. very long message here. very long message here. very long
           message here. very long message here. very long message here. very
