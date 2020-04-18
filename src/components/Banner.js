@@ -1,8 +1,8 @@
 import React from "react";
 
-function Banner({ title, content }) {
+function Banner({ title, content, type }) {
   return (
-    <div>
+    <div className={`banner banner-${type.toLowerCase()}`}>
       <h2>{title}</h2>
       <p>{content}</p>
     </div>
