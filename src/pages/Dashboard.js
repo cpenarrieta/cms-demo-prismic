@@ -1,12 +1,13 @@
 import React from "react";
 import Banner from "../components/Banner";
+import { useLocale } from "../components/LocaleContext";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { RichText } from "prismic-reactjs";
 
 const DASHBOARD_CMS_QUERY = gql`
-  query {
-    allDashboards(tags: "payroll-admin", lang: "en-us") {
+  query getDashboard($locale: String!) {
+    allDashboards(tags: "payroll-admin", lang: $locale) {
       edges {
         node {
           dashboard_title
@@ -28,7 +29,10 @@ const injectFirstName = (str, userFirstName) =>
   str.replace("%userFirstName%", userFirstName);
 
 function Dashboard({ userFirstName }) {
-  const { loading, data } = useQuery(DASHBOARD_CMS_QUERY);
+  const { locale } = useLocale();
+  const { loading, data } = useQuery(DASHBOARD_CMS_QUERY, {
+    variables: { locale },
+  });
   const cmsData = data?.allDashboards?.edges?.[0]?.node;
 
   if (loading || !cmsData) {
@@ -40,8 +44,9 @@ function Dashboard({ userFirstName }) {
       <h2>{cmsData.dashboard_title}</h2>
       <h3>{injectFirstName(cmsData.dashboard_sub_title, userFirstName)}</h3>
       <div className="banners">
-        {cmsData.banners.map((banner) => (
+        {cmsData.banners.map((banner, key) => (
           <Banner
+            key={`banner-${key}`}
             title={banner.banner_title}
             content={RichText.render(banner.banner_content)}
             type={banner.banner_type}

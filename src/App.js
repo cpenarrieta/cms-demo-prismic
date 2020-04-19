@@ -8,6 +8,7 @@ import { PrismicLink } from "apollo-link-prismic";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import ApolloClient from "apollo-client";
 import { ApolloProvider } from "@apollo/react-hooks";
+import { LocaleProvider } from "./components/LocaleContext";
 
 export default function App() {
   const client = new ApolloClient({
@@ -19,22 +20,24 @@ export default function App() {
 
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <div>
-          <Menu />
-          <Switch>
-            <Route path="/add-address">
-              <AddAddress />
-            </Route>
-            <Route path="/add-employee">
-              <AddEmployee />
-            </Route>
-            <Route path="/">
-              <Dashboard userFirstName="Cristian" />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+      <LocaleProvider>
+        <Router>
+          <div>
+            <Menu />
+            <Switch>
+              <Route path="/add-address">
+                <AddAddress />
+              </Route>
+              <Route path="/add-employee">
+                <AddEmployee />
+              </Route>
+              <Route path="/">
+                <Dashboard userFirstName="Cristian" />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </LocaleProvider>
     </ApolloProvider>
   );
 }
