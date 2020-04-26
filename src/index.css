@@ -64,3 +64,92 @@ body {
   background-color: #fff3ef;
   border-color: #d5351f;
 }
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-summary {
+  width: 500px;
+  border: 2px steelblue solid;
+  text-align: center;
+  border-radius: 15px;
+  padding-top: 5px;
+  margin-top: 10px;
+}
+
+.blog-summary a {
+  color: #525257;
+}
+
+.blog-summary img {
+  width: 490px;
+}
+
+.gusto-blog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-item-header {
+  display: flex;
+  height: 500px;
+}
+
+.blog-item-body {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.blog-item-header-title {
+  flex: 1;
+  font-size: 39px;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.blog-item-header-title p {
+  font-size: 14px;
+}
+
+.blog-item-header-image {
+  flex: 1;
+}
+
+.blog-quote blockquote {
+  margin-bottom: 2rem;
+  display: inline-block;
+  font-style: italic;
+  font-size: 24px;
+  color: #868686;
+}
+
+.blog-quote blockquote::before {
+  content: "« ";
+}
+
+.blog-quote blockquote::after {
+  content: " »";
+}
+
+.author {
+  display: flex;
+  font-size: 24px;
+  color: #525257;
+  margin-left: 40px;
+}
+
+.blog-quote img {
+  width: 70px;
+}

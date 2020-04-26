@@ -18,6 +18,9 @@ function Menu() {
           <Link to="/add-employee">Add Employees</Link>
         </li>
         <li>
+          <Link to="/blog">Blog</Link>
+        </li>
+        <li>
           <select
             value={locale}
             name="locale-select"

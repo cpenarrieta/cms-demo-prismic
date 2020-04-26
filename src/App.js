@@ -4,6 +4,8 @@ import Menu from "./components/Menu";
 import AddAddress from "./pages/AddAddress";
 import AddEmployee from "./pages/AddEmployee";
 import Dashboard from "./pages/Dashboard";
+import Blog from "./pages/Blog";
+import BlogList from "./pages/BlogList";
 import { PrismicLink } from "apollo-link-prismic";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import ApolloClient from "apollo-client";
@@ -30,6 +32,12 @@ export default function App() {
               </Route>
               <Route path="/add-employee">
                 <AddEmployee />
+              </Route>
+              <Route exact path="/blog">
+                <BlogList />
+              </Route>
+              <Route exact path={`/blog/:blogUid`}>
+                <Blog />
               </Route>
               <Route path="/">
                 <Dashboard userFirstName="Cristian" />
