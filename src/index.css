@@ -127,6 +127,10 @@ body {
   flex: 1;
 }
 
+.blog-quote {
+  border: 2px rgb(29, 149, 247) solid;
+}
+
 .blog-quote blockquote {
   margin-bottom: 2rem;
   display: inline-block;
@@ -152,4 +156,22 @@ body {
 
 .blog-quote img {
   width: 70px;
+}
+
+.image-gallery {
+  border: 2px #e9b550 solid;
+}
+
+.image-gallery-grid {
+  display: flex;
+}
+
+.image-gallery-grid img {
+  width: 170px;
+}
+
+.image-gallery-grid-item {
+  width: 200px;
+  border: 2px #2babad solid;
+  margin-left: 10px;
 }
