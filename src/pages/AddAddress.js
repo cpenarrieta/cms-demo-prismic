@@ -6,8 +6,11 @@ import gql from "graphql-tag";
 import { RichText } from "prismic-reactjs";
 
 const ADD_ADDRESS_CMS_QUERY = gql`
-  query addAddress($locale: String!) {
-    allAdd_addresss(lang: $locale) {
+  query addAddress(
+    $locale: String!
+    $experiments: [String!] = ["exp-control"]
+  ) {
+    allAdd_addresss(lang: $locale, tags_in: $experiments) {
       edges {
         node {
           add_address_title
@@ -35,7 +38,10 @@ const ADD_ADDRESS_CMS_QUERY = gql`
 function AddAddress() {
   const { locale } = useLocale();
   const { loading, data } = useQuery(ADD_ADDRESS_CMS_QUERY, {
-    variables: { locale },
+    variables: {
+      locale,
+      experiments: window.experiments || ["exp-control"],
+    },
   });
 
   const cmsData = data?.allAdd_addresss?.edges?.[0]?.node;
