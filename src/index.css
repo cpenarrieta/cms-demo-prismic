@@ -175,3 +175,38 @@ body {
   border: 2px #2babad solid;
   margin-left: 10px;
 }
+
+.add-address {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-address-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.add-address .banner {
+  width: 20%;
+}
+
+.add-address form {
+  margin-right: 20px;
+}
+
+.add-address form.form-address {
+  display: table;
+}
+
+.add-address  div.form-address {
+  display: table-row;
+}
+
+.add-address label, input, select {
+  display: table-cell;
+  margin-bottom: 10px;
+}
+
+.add-address  label {
+  padding-right: 10px;
+}
