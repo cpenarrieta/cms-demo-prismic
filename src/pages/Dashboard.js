@@ -1,9 +1,8 @@
 import React from "react";
 import Banner from "../components/Banner";
-import { useLocale } from "../components/LocaleContext";
-import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { RichText } from "prismic-reactjs";
+import useCmsQuery from "../hooks/useCmsQuery";
 
 const DASHBOARD_CMS_QUERY = gql`
   query getDashboard($locale: String!) {
@@ -29,10 +28,7 @@ const injectFirstName = (str, userFirstName) =>
   str.replace("%userFirstName%", userFirstName);
 
 function Dashboard({ userFirstName }) {
-  const { locale } = useLocale();
-  const { loading, data } = useQuery(DASHBOARD_CMS_QUERY, {
-    variables: { locale },
-  });
+  const { loading, data } = useCmsQuery(DASHBOARD_CMS_QUERY);
   const cmsData = data?.allDashboards?.edges?.[0]?.node;
 
   if (loading || !cmsData) {

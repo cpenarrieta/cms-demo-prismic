@@ -1,9 +1,8 @@
 import React from "react";
 import Banner from "../components/Banner";
-import { useLocale } from "../components/LocaleContext";
-import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { RichText } from "prismic-reactjs";
+import useCmsQuery from "../hooks/useCmsQuery";
 
 const ADD_ADDRESS_CMS_QUERY = gql`
   query addAddress(
@@ -36,14 +35,7 @@ const ADD_ADDRESS_CMS_QUERY = gql`
 `;
 
 function AddAddress() {
-  const { locale } = useLocale();
-  const { loading, data } = useQuery(ADD_ADDRESS_CMS_QUERY, {
-    variables: {
-      locale,
-      experiments: window.experiments || ["exp-control"],
-    },
-  });
-
+  const { loading, data } = useCmsQuery(ADD_ADDRESS_CMS_QUERY);
   const cmsData = data?.allAdd_addresss?.edges?.[0]?.node;
 
   if (loading || !cmsData) {

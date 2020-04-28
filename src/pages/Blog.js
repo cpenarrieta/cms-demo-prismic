@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/react-hooks";
+import useCmsQuery from "../hooks/useCmsQuery";
 import { RichText } from "prismic-reactjs";
 import gql from "graphql-tag";
 import BlogBody from "../components/BlogBody";
@@ -68,10 +68,11 @@ const BLOG_ITEM_CMS_QUERY = gql`
 
 function Blog() {
   let { blogUid } = useParams();
-  const { loading, data } = useQuery(BLOG_ITEM_CMS_QUERY, {
-    variables: { uid: blogUid },
-    fetchPolicy: "no-cache", // hack to allow the use of Fragments here, real solution is unnecesary for this demo.
-  });
+  const { loading, data } = useCmsQuery(
+    BLOG_ITEM_CMS_QUERY,
+    { uid: blogUid },
+    { fetchPolicy: "no-cache" } // hack to allow the use of Fragments here, real solution is unnecesary for this demo.
+  );
 
   if (loading) {
     return <div>loading...</div>;

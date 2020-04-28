@@ -1,7 +1,6 @@
 import React from "react";
 import BlogSummary from "../components/BlogSummary";
-import { useLocale } from "../components/LocaleContext";
-import { useQuery } from "@apollo/react-hooks";
+import useCmsQuery from "../hooks/useCmsQuery";
 import gql from "graphql-tag";
 
 const BLOG_LIST_CMS_QUERY = gql`
@@ -22,10 +21,7 @@ const BLOG_LIST_CMS_QUERY = gql`
 `;
 
 function BlogList() {
-  const { locale } = useLocale();
-  const { loading, data } = useQuery(BLOG_LIST_CMS_QUERY, {
-    variables: { locale },
-  });
+  const { loading, data } = useCmsQuery(BLOG_LIST_CMS_QUERY);
 
   if (loading) {
     return <div>loading...</div>;
