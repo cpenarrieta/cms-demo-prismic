@@ -1,7 +1,7 @@
 body {
   margin: auto 50px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -18,7 +18,6 @@ body {
   margin-top: 20px;
   padding-top: 20px;
   display: flex;
-  border-top: red 1px solid;
 }
 
 .dashboard-image {
@@ -27,5 +26,41 @@ body {
 
 .dashboard-text {
   flex: 1;
+  border-left: teal 1px solid;
+  padding-left: 20px;
 }
 
+.banner {
+  border: 1px solid transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-radius: 4px;
+  color: #525257;
+  margin-bottom: 20px;
+  padding: 20px;
+  padding-left: 20px;
+  position: relative;
+  text-align: left;
+}
+
+.banner-success {
+  background-color: #f3fafb;
+  border-color: #2babad;
+}
+
+.banner-info {
+  background-color: #fbfafa;
+  border-color: #dcdcdc;
+}
+
+.banner-warning {
+  background-color: #fffaf2;
+  border-color: #e9b550;
+}
+
+.banner-danger {
+  background-color: #fff3ef;
+  border-color: #d5351f;
+}
