@@ -12,3 +12,4 @@ We will cover the following items:
 5. Components within CMS [`part-5` branch]
 6. Experiments [`part-6` branch]
 7. Visualizing draft/preview content [`part-7` branch]
+8. Menu content from CMS [`part-8` branch]
